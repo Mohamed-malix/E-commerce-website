@@ -1,9 +1,10 @@
 
 import path from "node:path";
+import autoprefixer from "autoprefixer";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
 export default {
-  entry: "./src/index.js",
+  entry: "./src/js/index.js",
   output: {
     filename: "main.js",
     path: path.resolve(import.meta.dirname, "dist"),
@@ -21,14 +22,34 @@ export default {
     rules: [
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use:  [
+          {
+            // Adds CSS to the DOM by injecting a `<style>` tag
+            loader: 'style-loader'
+          },
+          {
+            // Interprets `@import` and `url()` like `import/require()` and will resolve them
+            loader: 'css-loader'
+          },
+          {
+            // Loader for webpack to process CSS with PostCSS
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  autoprefixer
+                ]
+              }
+            }
+          },
+        ]
       },
       {
         test: /\.html$/i,
         use: ["html-loader"],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|svg|jpg|jpeg)$/i,
         type: "asset/resource",
       }
     ],
