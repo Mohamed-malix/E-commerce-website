@@ -6,12 +6,30 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="container">
-      <header class="header"></header>
+    <div class="containerDiv">
+        <nav class="navBar">
+            <div class="navLinks d-flex align-items-center gap-4">
+                <div class="icon fs-4">Happy Shopping</div>
+                <ul class="ulLinks d-flex">
+                    <li class="me-4">Home</li>
+                    <li class="me-4">Events & news</li>
+                    <li class="me-4">Contact</li>
+                </ul>
+            </div>
+            <form class="d-flex" role="search">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+                <button class="btn btn-outline-success" type="submit">
+                  Search
+                </button>
+              </form>
+        </nav>
 
-      <div class="content row">
-        
-      </div>
+      <div class="content"></div>
 
       <footer class="footer"></footer>
     </div>
