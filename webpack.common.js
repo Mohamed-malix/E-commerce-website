@@ -49,9 +49,10 @@ export default {
         use: ["html-loader"],
       },
       {
-        test: /\.(png|svg|jpg|jpeg)$/i,
+        test: /\.(png|svg|jpg|jpeg|woff|woff2|ttf|eot)$/i,
         type: "asset/resource",
-      }
+      },
+ 
     ],
   },
 };

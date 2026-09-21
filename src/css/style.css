@@ -7,6 +7,21 @@
 
 a{
     text-decoration: none;
+    color:#fff;
+}
+
+a:hover{
+    color:rgb(246, 195, 133);
+}
+
+.btn{
+    border:1px solid rgb(246, 195, 133);
+    color:rgb(249, 182, 101);
+}
+
+.btn:hover{
+    color:#fff;
+    background: rgb(249, 182, 101);
 }
 
 li{
@@ -17,7 +32,7 @@ li{
 
 .containerDiv{
     width:100%;
-    height:100%;
+    height:100vh;
     background:#423939;
 
    display:flex;
@@ -56,4 +71,17 @@ li{
 
 .card{
     margin-right:3em;
+}
+
+
+.trySearch{
+    font-size: 1.6rem;
+}
+
+.noFound{
+    font-size: 1.9rem;
+}
+
+.icon-glass{
+    font-size: 3.2rem;
 }
