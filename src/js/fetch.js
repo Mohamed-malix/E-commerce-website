@@ -27,7 +27,7 @@ function displayData(rowData){
             <div class="card-body">
               <h4 class='title fs-5'> ${item.title}:</4> 
               <p class="card-text fs-6 mt-2">
-                ${item.description}
+                ${item.description.split(' ').splice(0,15).join(' ')} ...
               </p>
             </div>
             <div class="card-bottom fs-6 mb-3 ms-1">
