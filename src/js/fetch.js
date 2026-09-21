@@ -37,7 +37,7 @@ function displayData(rowData){
               </p>
             </div>
             <div class="card-bottom fs-6 mb-3 ms-1">
-               <div>Rating: ${item.rating}</div>
+               <div>Rating: ${item.rating} <i class="fa-solid fa-star star"></i></div>
                <div class='fs-5 fw-bold'>Price: ${item.price}</div> 
             </div>
         </div>
