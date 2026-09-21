@@ -5,7 +5,13 @@ function getApis(){
     api.open('GET', 'https://dummyjson.com/products');
     api.send();
 
+    document.querySelector('.noProduct').classList.add('d-none');
+    document.querySelector('.loading').classList.remove('d-none');
+    document.querySelector('.containerDiv').style.height='100vh';
     api.addEventListener('load', () => {
+
+        document.querySelector('.loading').classList.add('d-none');
+        document.querySelector('.containerDiv').style.height='100%';
         if(api.status==200 && api){
             let data = JSON.parse(api.response);
             displayData(data.products);
@@ -13,7 +19,7 @@ function getApis(){
     })
 }
 
-// getApis();
+getApis();
 
 
 
