@@ -28,7 +28,7 @@ li{
 
 
 .content{
-    width:75%;
+    width:70%;
     margin:auto;
     padding:25px 30px;
 }
@@ -50,7 +50,7 @@ li{
     margin-top:5em;
 
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(23em, 1fr));
+    grid-template-columns:repeat(auto-fit,minmax(22em, 1fr));
 }
 
 
