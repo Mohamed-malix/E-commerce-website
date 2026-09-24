@@ -1,22 +1,27 @@
 
 
-function getApis(){
-    let api =new XMLHttpRequest();
-    api.open('GET', 'https://dummyjson.com/products');
-    api.send();
-
+ function getApis(){
+    
     document.querySelector('.noProduct').classList.add('d-none');
     document.querySelector('.loading').classList.remove('d-none');
     document.querySelector('.containerDiv').style.height='100vh';
-    api.addEventListener('load', () => {
 
-        document.querySelector('.loading').classList.add('d-none');
-        document.querySelector('.containerDiv').style.height='100%';
-        if(api.status==200 && api){
-            let data = JSON.parse(api.response);
-            displayData(data.products);
-        }
-    })
+     fetch('https://dummyjson.com/products')
+        .then( response => {
+            
+            if(response.ok){
+                document.querySelector('.loading').classList.add('d-none');
+                document.querySelector('.containerDiv').style.height='100%';
+
+                return response.json();
+            }
+            else{
+                throw new Error('Network error');
+            }
+        })
+        .then( data => displayData(data.products))
+        .catch(error => console.error('there was a problem with the fetch operation:', error));
+
 }
 
 getApis();

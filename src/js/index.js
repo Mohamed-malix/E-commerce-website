@@ -4,4 +4,3 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap';
 import '../css/style.css';
 import './fetch.js'
-console.log('App is running');
