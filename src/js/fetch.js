@@ -8,7 +8,7 @@
 
      fetch('https://dummyjson.com/products')
         .then( response => {
-            
+
             if(response.ok){
                 document.querySelector('.loading').classList.add('d-none');
                 document.querySelector('.containerDiv').style.height='100%';
