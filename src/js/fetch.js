@@ -1,30 +1,41 @@
 
 
- function getApis(){
+
+let searchInput =document.querySelector('#search');
+let searchBtn= document.querySelector('#searchBtn');
+let products=[];
+
+ async function getApis(){
     
     document.querySelector('.noProduct').classList.add('d-none');
     document.querySelector('.loading').classList.remove('d-none');
     document.querySelector('.containerDiv').style.height='100vh';
 
-     fetch('https://dummyjson.com/products')
-        .then( response => {
+    try{
+      let response= await fetch('https://dummyjson.com/products')
+   
+               if(response.ok){
+                   document.querySelector('.loading').classList.add('d-none');
+                   document.querySelector('.containerDiv').style.height='100%';
+   
+                  let data = await response.json();
+                  products=data.products
 
-            if(response.ok){
-                document.querySelector('.loading').classList.add('d-none');
-                document.querySelector('.containerDiv').style.height='100%';
+                  displayData(products);
+               }
+               else{
+                   throw new Error('Network error');
+               }
 
-                return response.json();
-            }
-            else{
-                throw new Error('Network error');
-            }
-        })
-        .then( data => displayData(data.products))
-        .catch(error => console.error('there was a problem with the fetch operation:', error));
+   }
+    catch(error){
+        console.error('Operation failed', error)
+    }
 
 }
 
 getApis();
+
 
 
 
@@ -49,5 +60,36 @@ function displayData(rowData){
         `
     })
 
+    products=rowData;
     document.querySelector('.content').innerHTML=data;
 }
+
+searchBtn.addEventListener('click', (e)=>search(searchInput.value));
+
+
+function search(inputValue){
+
+    let searchResults=[];
+    products.forEach(item => {
+        if(item.title.toLowerCase().includes(inputValue.toLowerCase())){
+            console.log(searchInput);
+            searchResults.push(item);
+        }
+        
+    })
+
+    displayData(searchResults);
+    console.log(searchInput.value);
+    clearInput();
+    document.querySelector('.containerDiv').style.height='100vh';
+}
+
+
+
+function clearInput(){
+    searchInput.value='';
+    
+}
+
+
+/*Make it possible to delete after entering input */
