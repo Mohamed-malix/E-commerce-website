@@ -95,3 +95,17 @@ li{
 .star{
     color:rgb(231, 182, 4);
 }
+
+.view-div .view-item{
+    border:none;
+    border-bottom:2px solid black;
+    background-color: transparent;
+
+    font-size: 1.1.rem;
+}
+
+.view-item:hover{
+    border-bottom:2px solid rgb(249, 182, 101);
+    color:rgb(246, 175, 89);
+    transition: ease 0.3s;
+}
