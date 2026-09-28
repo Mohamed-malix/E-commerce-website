@@ -39,7 +39,9 @@ function displayData(rowData) {
   rowData.forEach((item) => {
     data += `
           <div class="card rounded-5 px-3 pb-2">
-            <img src="${item.thumbnail}" class="card-img-top" alt="${item.thumbnail}" />
+              <div class="d-flex justify-content-center align-items-center w-100 mb-3">
+                <img src="${item.thumbnail}" class=" h-75" alt="${item.thumbnail}" />
+              </div>
             <div class="card-body">
               <h4 class='title fs-5'> ${item.title}:</4> 
               <p class="card-text fs-6 mt-2">
@@ -108,7 +110,7 @@ function displaySingleData(product){
 
     modalContent.innerHTML=`
      <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
+              <h5 class="modal-title fs-5">${product.title}</h5>
               <button
                 type="button"
                 class="btn-close"
@@ -117,18 +119,18 @@ function displaySingleData(product){
               ></button>
             </div>
             <div class="modal-body">
-              <p>Modal body text goes here.</p>
+              <div class="d-flex justify-content-center align-items-center w-100 mb-3">
+                 <img src="${product.thumbnail}">
+              </div>
+              <p><strong>Description: </strong>${product.description}</p>
+              <p class=""><strong>Category: </strong>${product.category}</p>
+            <p class=""><strong>Price: </strong>${product.price}$</p>
+            <p class=""><strong>Rating: </strong>${product.rating}<i class="fa-solid fa-star star"></i></p>
+            <p class=""><strong>Brand: </strong>${product.brand}</p>
             </div>
             <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
+              <button type="button" class="btn">
+                Buy
               </button>
             </div>
     `
