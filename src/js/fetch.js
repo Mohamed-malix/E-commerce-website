@@ -1,6 +1,10 @@
 let searchInput = document.querySelector("#search");
 let searchBtn = document.querySelector("#searchBtn");
-let modal = document.querySelector(".modal");
+let modal = document.querySelector("#Modal");
+let modalContent = document.querySelector(".modal-content");
+
+
+
 let products = [];
 
 async function getApis() {
@@ -47,7 +51,7 @@ function displayData(rowData) {
                <div>Rating: ${item.rating} <i class="fa-solid fa-star star"></i></div>
             </div>
             <div class="view-div ms-2 mb-1">
-                <button class="view-item" onclick="getSingleItem(${item.id})">View-item</button>
+                <button class="view-item" type="button" data-bs-toggle="modal" data-bs-target="#Modal" onclick="getSingleItem(${item.id})">View-item</button>
             </div>
         </div>
         `;
@@ -88,7 +92,7 @@ async function getSingleItem(id) {
     try{
 
         let response= await fetch(`https://dummyjson.com/products/${id}`);
-        let data= response.json();
+        let data= await response.json();
         
         displaySingleData(data);
         console.log(data);
@@ -101,37 +105,32 @@ async function getSingleItem(id) {
 
 
 function displaySingleData(product){
-    console.log(product.title);
 
-    modal.innerHTML=`
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">${product.title}</h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div class="modal-body">
-                <p>${product.description}</p>
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button type="button" class="btn btn-primary">
-                  Save changes
-                </button>
-              </div>
+    modalContent.innerHTML=`
+     <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
-          </div>
+            <div class="modal-body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
     `
     
 }
